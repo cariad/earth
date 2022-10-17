@@ -1,11 +1,15 @@
-<a href="/" title="Home">{{ partial
-  "image.html"
-  (dict "base_height" 280
-        "base_width"  280
-        "context"    .
-        "id"         "Cariad"
-  )
-}}</a>
+{{ $context := . }}
+
+{{ with .Site.Params.avatar }}
+  <a href="/" title="Home">{{ partial
+    "image.html"
+    (dict "base_height" 280
+          "base_width"  280
+          "context"    $context
+          "id"         .
+    )
+  }}</a>
+{{ end }}
 
 {{ if ne .IsSection true }}
   {{ $title := .Title | markdownify }}

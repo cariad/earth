@@ -48,6 +48,10 @@ creator = "@CariadEccleston"
 site = "@PrinterOnFire"
 
 [params]
+  # Name of the image in your images page bundle to display in the sidebar.
+  # Optional and defaults to no image.
+  avatar: me
+
   # Fathom Analytics (referral link: https://usefathom.com/ref/TVWIFS) site ID.
   # Optional and defaults to no Fathom integration.
   fathom = "MACARONI"
