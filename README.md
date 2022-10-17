@@ -50,11 +50,11 @@ site = "@PrinterOnFire"
 [params]
   # Fathom Analytics (referral link: https://usefathom.com/ref/TVWIFS) site ID.
   # Optional and defaults to no Fathom integration.
-  fathom: MACARONI
+  fathom = "MACARONI"
 
   # Emoji to use as the site's favicon.
   # Optional and defaults to 🔥.
-  favicon: 🔥
+  favicon = "🔥"
 
   # Greeting to show in the sidebar and home page.
   greeting = "Hello! I'm Danny Sausages and I'm your personal chef."
