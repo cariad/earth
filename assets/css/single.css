@@ -1,0 +1,25 @@
+#single header {
+  display: none;
+}
+
+#single header p {
+  color: var(--gray);
+  font-size: var(--small);
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+#single h2 {
+  border-bottom: 1px solid var(--light-gray);
+  margin-top: 3rem;
+  padding-bottom: 0.2rem;
+}
+
+#single h3 {
+  margin-top: 3rem;
+}
+
+#single img {
+  margin-top: var(--taller-gap);
+  margin-bottom: var(--taller-gap);
+}

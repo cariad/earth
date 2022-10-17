@@ -1,0 +1,52 @@
+<meta charset="utf-8" />
+
+<link href="{{ .Permalink }}"      rel="canonical">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>{{ .Site.Params.favicon | default "🔥" }}</text></svg>">
+
+{{ $base_url := .Site.BaseURL }}
+{{ $site_title := .Site.Title }}
+{{ $title := .Title | markdownify }}
+
+<meta content="width=device-width, initial-scale=1"           name="viewport">
+<meta content="{{ .Date.Format "2006-01-02T15:04:05Z0700" }}" property="article:published_time">
+<meta content="{{ .Summary | plainify }}"                     property="og:description">
+<meta content="{{ $title }}"                                  property="og:title">
+<meta content="{{ .Permalink }}"                              property="og:url">
+
+{{ with .Site.Author.name }}
+  <meta content="{{ . }}" name="author">
+{{ end }}
+
+{{ with .Site.Author.twitter.creator }}
+  <meta content="{{ . }}" name="twitter:creator">
+{{ end }}
+
+{{ with .Site.Author.twitter.site | default .Site.Author.twitter.creator }}
+  <meta content="{{ . }}" name="twitter:site">
+{{ end }}
+
+{{ with .Site.Params.opengraph }}
+  {{ $alt := .alt | default $site_title }}
+  {{ with .image }}
+    <meta content="{{ $base_url }}{{ . }}" property="og:image">
+    <meta content="{{ $alt }}"             property="og:image:alt">
+    <meta content="summary_large_image"    name="twitter:card">
+  {{ end }}
+{{ end }}
+
+<title>
+  {{- if ne .Title .Site.Title -}}{{- with $title -}}{{ . }} » {{ end }}{{- end -}}{{- .Site.Title -}}
+</title>
+
+{{ partial "css.html" }}
+
+{{ if not .Site.IsServer }}
+  {{ with .Site.Params.fathom }}
+    <script
+      data-site="{{ . }}"
+      defer
+      src="https://cdn.usefathom.com/script.js"></script>
+  {{ end }}
+{{ end }}
+
+{{ hugo.Generator }}

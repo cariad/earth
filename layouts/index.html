@@ -1,0 +1,36 @@
+{{ define "main" }}
+
+  <h1>{{ .Site.Title }}</h1>
+
+  <p>{{ .Site.Params.greeting | markdownify }}</p>
+
+  {{ $pages := .Site.Pages }}
+
+  {{ range sort .Site.Sections.ByWeight }}
+    {{ if eq .Params.on_home true }}
+      <h2>{{ .Title }} </h2>
+
+      {{ range first 3 .RegularPages }}
+        <article>
+          <a href="{{ .RelPermalink }}" title="{{ .Title }}">
+            <header>
+              <p>{{ .Date.Format "Monday 2 January, 2006" }}</p>
+              <h3>{{ .Title }}</h1>
+            </header>
+            <p>{{ .Summary }}</p>
+          </a>
+        </article>
+      {{ end }}
+
+      {{ $more_text := .Params.more_text | default "More" }}
+
+      <p>
+        <a href="{{ .RelPermalink }}" title="{{ $more_text}}">
+          {{ $more_text }}
+        </a>
+      </p>
+
+    {{ end }}
+  {{ end }}
+
+{{ end }}

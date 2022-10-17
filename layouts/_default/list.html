@@ -1,0 +1,19 @@
+{{ define "main" }}
+
+<h1>{{ .Title }}</h1>
+
+{{ range (.Paginate .RegularPages).Pages }}
+  <article>
+    <a href="{{ .RelPermalink }}" title="{{ .Title }}">
+      <header>
+        <p>{{ .Date.Format "Monday 2 January, 2006" }}</p>
+        <h3>{{ .Title }}</h1>
+      </header>
+      <p>{{ .Summary }}</p>
+    </a>
+  </article>
+{{ end }}
+
+{{ template "_internal/pagination.html" . }}
+
+{{ end }}

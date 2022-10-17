@@ -1,0 +1,15 @@
+{{ $resources := slice }}
+
+{{ $resources = $resources | append (resources.Get "css/fonts.css")}}
+{{ $resources = $resources | append (resources.Get "css/home.css")}}
+{{ $resources = $resources | append (resources.Get "css/list.css")}}
+{{ $resources = $resources | append (resources.Get "css/main.css")}}
+{{ $resources = $resources | append (resources.Get "css/side.css")}}
+{{ $resources = $resources | append (resources.Get "css/single.css")}}
+
+{{ $bundle := $resources | resources.Concat "style.css" }}
+{{ $css := $bundle | minify | fingerprint }}
+
+<link integrity="{{ $css.Data.Integrity }}"
+      href="{{ $css.RelPermalink }}"
+      rel="stylesheet" />

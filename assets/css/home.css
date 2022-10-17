@@ -1,0 +1,34 @@
+#body_home #content h1,
+#body_section #content h1 {
+  margin-bottom: 2rem;
+}
+
+#body_home #content h2,
+#body_section #content h2 {
+  margin-top: 4rem;
+  margin-bottom: 3rem;
+}
+
+#body_home article,
+#body_section article {
+  margin-bottom: 3rem;
+}
+
+#body_home article a,
+#body_section article a {
+  color: var(--fore);
+  text-decoration: none;
+}
+
+#body_home header p,
+#body_section header p {
+  color: var(--gray);
+  font-size: var(--small);
+  margin-top: 0;
+  margin-bottom: 0.3rem;
+}
+
+#body_home article p,
+#body_section article p {
+  margin-top: 1rem;
+}
