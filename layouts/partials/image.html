@@ -1,0 +1,60 @@
+{{ $base_width  := .base_width }}
+{{ $base_height  := .base_height }}
+
+{{ $images_page := .content.Site.Params.images | default "/images" }}
+
+{{ $images   := .context.Site.GetPage $images_page }}
+{{ $resource := $images.Resources.GetMatch .id }}
+
+{{ $alt := "" }}
+{{ $anchor   := $resource.Params.anchor | default "Smart" }}
+{{ $init_url := "" }}
+{{ $render_width := 0 }}
+{{ $render_height := 0 }}
+{{ $src := "" }}
+{{ $srcset := "" }}
+{{ $resized := false }}
+
+{{ $alt           = $resource.Params.alt }}
+{{ $render_width  = $resource.Width }}
+{{ $render_height = $resource.Height }}
+{{ $src           = $resource.RelPermalink }}
+
+{{ range (slice 1 2 3 4) }}
+  {{ $width := mul $base_width . }}
+
+  {{ if gt $resource.Width $width }}
+
+    {{ if ne $srcset "" }}
+      {{ $srcset = printf "%s," $srcset }}
+    {{ end }}
+
+    {{ if $base_height }}
+      {{ $height := mul $base_height . }}
+      {{ $param  := printf "%dx%d %s webp" $width $height $anchor}}
+      {{ $img    := $resource.Fill $param }}
+      {{ $srcset = printf "%s %s %dx" $srcset $img.RelPermalink . }}
+    {{ else }}
+      {{ $param  := printf "%dx %s webp" $width $anchor}}
+      {{ $img    := $resource.Resize $param }}
+      {{ $srcset = printf "%s %s %dx" $srcset $img.RelPermalink . }}
+    {{ end }}
+
+  {{ end }}
+{{ end }}
+
+{{ if eq $srcset "" }}
+  <!-- This image is very small! Let's just show the original. -->
+
+  {{ $base_width = $resource.Width }}
+  {{ $base_height = $resource.Height }}
+  {{ $param  := printf "%dx%d %s webp" $base_width $base_height $anchor}}
+  {{ $img    := $resource.Fill $param }}
+  {{ $srcset = $img.RelPermalink }}
+
+{{ end }}
+
+<img alt="{{ $alt }}"
+     height="{{ $base_height }}"
+     srcset="{{ $srcset }}"
+     width="{{ $base_width }}" />

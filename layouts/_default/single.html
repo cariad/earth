@@ -1,0 +1,14 @@
+{{ define "main" }}
+
+  <article id="single">
+
+    <header>
+      <p>{{ .Date.Format "Monday 2 January, 2006" }}</p>
+      <h1>{{ .Title | markdownify }}</h1> <!-- cspell:disable-line -->
+    </header>
+
+    {{ .Content }}
+
+  </article>
+
+{{ end }}

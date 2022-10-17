@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en-GB">
+
+  <head>{{- partial "head.html" . -}}</head>
+
+  <body id="{{ if .IsHome }}body_home{{ else if .IsSection }}body_section{{ end }}">
+    <aside id="side">{{- partial "side.html" . -}}</aside>
+    <div id="content">{{- block "main" . }}{{- end }}</div>
+  </body>
+
+  {{ $js := (resources.Get "js/footer.js") | minify | fingerprint }}
+  <script
+    integrity="{{ $js.Data.Integrity }}"
+    src="{{ $js.RelPermalink }}"></script>
+
+</html>

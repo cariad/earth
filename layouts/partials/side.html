@@ -1,0 +1,52 @@
+<a href="/" title="Home">{{ partial
+  "image.html"
+  (dict "base_height" 280
+        "base_width"  280
+        "context"    .
+        "id"         "Cariad"
+  )
+}}</a>
+
+{{ if ne .IsSection true }}
+  {{ $title := .Title | markdownify }}
+  {{ $date := .Date }}
+  {{ with .TableOfContents }}
+    <p id="side_date">{{ $date.Format "Monday 2 January, 2006" }}</p>
+    <h2 id="side_title">{{ $title }}</h2>
+    {{ . }}
+  {{ end }}
+{{ end }}
+
+{{ $include_greeting := .Params.include_greeting | default true }}
+
+{{ if and (eq $include_greeting true) (ne .IsHome true) }}
+  <p>{{ .Site.Params.greeting | markdownify }}</p>
+{{ end }}
+
+<nav id="side_pages">
+  <h2>{{ .Site.Params.sideNav.title | default "Pages" }}</h2>
+
+  {{ $show_home := .Site.Params.sideNav.home.include | default true }}
+
+  <ul>
+    {{ if eq $show_home true }}
+      {{ $home_title := .Site.Params.sideNav.home.title | default "Home" }}
+      {{ $home_uri := .Site.Params.sideNav.home.uri | default "/" }}
+      <li>
+        <a href="{{ $home_uri }}" title="{{ $home_title | markdownify }}">
+          {{ $home_title | markdownify }}
+        </a>
+      </li>
+    {{ end }}
+
+    {{ range .Site.Pages.ByWeight }}
+      {{ if eq .Params.on_side true }}
+        <li>
+          <a href="{{ .RelPermalink }}" title="{{ .Title | markdownify }}">
+            {{ .Title | markdownify }}
+          </a>
+        </li>
+      {{ end }}
+    {{ end }}
+  </ul>
+</nav>

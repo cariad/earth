@@ -1,0 +1,59 @@
+#side {
+  color: var(--gray);
+}
+
+#side #side_title {
+  color: var(--fore);
+  font-size: var(--h1);
+  font-weight: 800;
+  margin-top: 0;
+}
+
+#side h2 {
+  margin-top: 2rem;
+  margin-bottom: 0;
+
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+#side img {
+  --moat: 2rem;
+
+  border-radius: 18px;
+  margin-inline: auto;
+  display: none;
+  width: calc(var(--side-width) - var(--moat));
+  margin-top: var(--moat);
+  margin-bottom: var(--moat);
+}
+
+#side li {
+  list-style: none;
+  margin-top: 0.5rem;
+}
+
+#side ul {
+  font-size: var(--small);
+  line-height: 1.4;
+  padding-left: 0;
+}
+
+#side ul a {
+  text-decoration: none;
+}
+
+#side ul ul {
+  margin-top: var(--small-gap);
+  padding-left: 0.6rem;
+}
+
+#side_date {
+  font-size: var(--small);
+  margin-top: 0;
+  margin-bottom: 0.3rem;
+}
+
+#side_pages h2 {
+  font-size: var(--small);
+}

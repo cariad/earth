@@ -1,0 +1,13 @@
+description = "The Hugo theme for https://cariad.earth"
+features = ["dark mode", "responsive"]
+homepage = "https://github.com/cariad/earth"
+license = "MIT"
+licenselink = "https://github.com/cariad/earth/blob/main/LICENSE"
+repo = "https://github.com/cariad/earth"
+tags = ["dark mode", "responsive"]
+min_version = 0.102
+name = "Earth"
+
+[author]
+  name = "Cariad Eccleston"
+  homepage = "https://cariad.earth"
