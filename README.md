@@ -97,7 +97,7 @@ image = "opengraph.png"
 
 ### Sections
 
-To include a section on the home page, create an `_index.md` file in the section's directory with the following front matter:
+To include a section on the home page or sidebar, create an `_index.md` file in the section's directory with the following front matter:
 
 ```yaml
 ---
@@ -106,8 +106,12 @@ To include a section on the home page, create an `_index.md` file in the section
 more_text: More posts
 
 # Puts the section on the home page.
-# Required.
+# Optional and defaults to false.
 on_home: true
+
+# Puts the section in the sidebar.
+# Optional and defaults to false.
+on_side: true
 
 # Section title.
 # Required.
