@@ -13,6 +13,8 @@ The Hugo theme for [cariad.earth](https://cariad.earth).
 - Emoji favicon
 - Fathom Analytics
 - Resizes and converts images to WebP
+- Featured images
+- Code syntax highlighting with Dracula theme
 
 ## Installation
 
