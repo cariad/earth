@@ -25,13 +25,32 @@
   <meta content="{{ . }}" name="twitter:site">
 {{ end }}
 
-{{ with .Site.Params.opengraph }}
-  {{ $alt := .alt | default $site_title }}
-  {{ with .image }}
-    <meta content="{{ $base_url }}{{ . }}" property="og:image">
-    <meta content="{{ $alt }}"             property="og:image:alt">
-    <meta content="summary_large_image"    name="twitter:card">
+{{ $images_page               := .Site.Params.images | default "/images" }}
+{{ $images                    := .Site.GetPage $images_page }}
+{{ $opengraph_page_image_name := .Site.Params.nil }}
+
+{{ with .Params.image }}
+  {{ with .name }}
+    {{ $opengraph_page_image_name = . }}
   {{ end }}
+{{ end }}
+
+{{ $opengraph_default_image_name := .Site.Params.nil }}
+
+{{ with .Site.Params.opengraph}}
+  {{ with .image }}
+    {{ $opengraph_default_image_name = . }}
+  {{ end }}
+{{ end }}
+
+{{ $opengraph_image_name := $opengraph_page_image_name | default $opengraph_default_image_name }}
+{{ $opengraph_image := $images.Resources.GetMatch $opengraph_image_name}}
+
+{{ with $opengraph_image }}
+  {{ $alt := $opengraph_image.Params.alt | default $title | default $site_title }}
+  <meta content="{{ $opengraph_image.Permalink }}" property="og:image">
+  <meta content="{{ $alt }}"                       property="og:image:alt">
+  <meta content="summary_large_image"              name="twitter:card">
 {{ end }}
 
 <title>
