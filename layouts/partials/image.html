@@ -1,7 +1,7 @@
 {{ $base_width  := .base_width }}
 {{ $base_height  := .base_height }}
 
-{{ $images_page := .content.Site.Params.images | default "/images" }}
+{{ $images_page := .context.Site.Params.images | default "/images" }}
 
 {{ $images   := .context.Site.GetPage $images_page }}
 {{ $resource := $images.Resources.GetMatch .id }}

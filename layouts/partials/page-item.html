@@ -1,0 +1,24 @@
+{{ $context := .context }}
+
+<article>
+  <a href="{{ .page.RelPermalink }}" title="{{ .Title }}">
+    <header>
+
+      <p>{{ .page.Date.Format "Monday 2 January, 2006" }}</p>
+      <h3>{{ .page.Title }}</h1>
+
+      {{ with .page.Params.image }}
+        {{ partial
+          "image.html"
+          (dict "base_height" 100
+                "base_width"  620
+                "context"    $context
+                "id"         .name
+          )
+        }}
+      {{ end }}
+
+    </header>
+    <p>{{ .page.Summary }}</p>
+  </a>
+</article>

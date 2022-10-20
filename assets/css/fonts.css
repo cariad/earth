@@ -31,3 +31,18 @@
   font-weight: 800;
   src: url("/fonts/figtree/800.woff2") format("woff2");
 }
+
+@font-face {
+  font-display: swap;
+  font-family: "Fira Code";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/fira-code/400.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Fira Code";
+  font-style: normal;
+  font-weight: 500;
+  src: url("/fonts/fira-code/500.woff2") format("woff2");
+}
