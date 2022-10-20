@@ -11,6 +11,12 @@
   }}</a>
 {{ end }}
 
+{{ $include_greeting := .Params.include_greeting | default true }}
+
+{{ if and (eq $include_greeting true) (ne .IsHome true) }}
+  <p>{{ .Site.Params.greeting | markdownify }}</p>
+{{ end }}
+
 {{ if ne .IsSection true }}
   {{ $title := .Title | markdownify }}
   {{ $date := .Date }}
@@ -19,12 +25,6 @@
     <h2 id="side_title">{{ $title }}</h2>
     {{ . }}
   {{ end }}
-{{ end }}
-
-{{ $include_greeting := .Params.include_greeting | default true }}
-
-{{ if and (eq $include_greeting true) (ne .IsHome true) }}
-  <p>{{ .Site.Params.greeting | markdownify }}</p>
 {{ end }}
 
 <nav id="side_pages">

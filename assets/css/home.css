@@ -20,6 +20,13 @@
   text-decoration: none;
 }
 
+#body_home article img,
+#body_section article img {
+  margin-top: 0.6rem;
+  margin-bottom: 0.6rem;
+  opacity: 0.75;
+}
+
 #body_home header p,
 #body_section header p {
   color: var(--gray);

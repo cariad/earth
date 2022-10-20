@@ -1,6 +1,8 @@
 /* cspell:disable */
 
 :root {
+  --body: 'Figtree', sans-serif;
+
   /* Update the JavaScript in baseof.html if you change the units from px. */
   --margin-top: 60px;
 
@@ -32,7 +34,7 @@ body {
   color: var(--fore);
   background: var(--back);
 
-  font-family: 'Figtree', sans-serif;
+  font-family: var(--body);
   font-size: 1.2rem;
   font-weight: 500;
 
@@ -74,7 +76,6 @@ html {
 }
 
 img {
-  border-radius: 12px;
   display: block;
   height: auto;
   margin-inline: auto;
@@ -96,6 +97,9 @@ p {
 
     --gray: #444;
     --light-gray: #ccc;
+
+    --code-back: lightyellow;
+    --code-border: darkorange;
   }
 }
 
@@ -106,6 +110,9 @@ p {
 
     --gray: #ccc;
     --light-gray: #444;
+
+    --code-back: #222;
+    --code-border: rgb(105, 112, 0);
   }
 
   a {
@@ -117,7 +124,6 @@ p {
   }
 }
 
-
 /*
 iPad Mini: landscape.
 
@@ -128,9 +134,10 @@ into landscape.
   :root {
     --h1: 4rem;
 
+    /* Update image sizes if you change this. */
+    --content-width: 620px;
     --page-width: 920px;
     --side-width: 220px;
-    --side-gap: 80px;
   }
 
   #content {
@@ -162,10 +169,10 @@ into landscape.
 
     left: calc(
       calc(100vw / 2) - calc(var(--page-width) / 2) + var(--side-width) +
-        var(--side-gap)
+        calc(var(--page-width) - var(--side-width) - var(--content-width))
     );
 
-    width: calc(var(--page-width) - var(--side-width) - var(--side-gap));
+    width: var(--content-width);
   }
 
   #single header {
@@ -185,10 +192,5 @@ into landscape.
   :root {
     --page-width: 1100px;
     --side-width: 350px;
-    --side-gap: 100px;
-  }
-
-  #side img {
-    border-radius: 28px;
   }
 }

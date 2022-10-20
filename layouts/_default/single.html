@@ -5,6 +5,20 @@
     <header>
       <p>{{ .Date.Format "Monday 2 January, 2006" }}</p>
       <h1>{{ .Title | markdownify }}</h1> <!-- cspell:disable-line -->
+
+      {{ $context := . }}
+
+      {{ with .Params.image }}
+        {{ partial
+          "image.html"
+          (dict "base_height" 300
+                "base_width"  620
+                "context"    $context
+                "id"         .name
+          )
+        }}
+      {{ end }}
+
     </header>
 
     {{ .Content }}

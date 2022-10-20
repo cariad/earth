@@ -126,17 +126,17 @@ weight: 1
 
 ### Pages
 
-To include a page in the sidebar, add the following front matter:
-
 ```yaml
 ---
-# Puts the page in the side bar.
-# Required.
-on_side: true
+# Describes the featured image for the header and OpenGraph.
+# Optional and defaults to no image.
+image:
+  # Name of the image in your images page bundle.
+  name: hello
 
-# Page title.
-# Required.
-title: Blog posts
+# Puts the page in the side bar.
+# Optional and defaults to false.
+on_side: true
 
 # Prescribes the (ascending) order of pages.
 # Optional and defaults to whatever Hugo believes is best.
@@ -157,15 +157,25 @@ Your bundle's `index.md` should contain data like this:
 ---
 headless: true
 resources:
+  # "name" is the reference to this image from shortcodes and the "image" front
+  # matter property.
   - name: parade
     params:
+      # Accessible text.
       alt: An ice cream parade on Pluto.
+
+      # Anchor point when the image is resized. Choose from "TopLeft", "Top",
+      # "TopRight", "Left", "Center", "Right", "BottomLeft", "Bottom",
+      # "BottomRight" or "Smart".
+      # Optional and defaults to "Smart".
+      anchor: Top
+
     src:  spine.jpg
     title: Ice Cream Parade
 ---
 ```
 
-`params.alt` prescribes the image's accessible text and `name` is the identifier to use when embedding images via the `image` shortcode.
+To embed this image in a page, use the `image` shortcode:
 
 ```markdown
 Do you remember last year's ice cream parade?

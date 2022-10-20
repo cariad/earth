@@ -1,3 +1,26 @@
+#single > .highlight {
+  margin-top: var(--para-gap);
+  margin-bottom: var(--para-gap);
+}
+
+#single > .highlight code {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 400;
+  overflow-x: auto;
+  padding-bottom: 0.6rem;
+  font-family: "Fira Code", monospace;
+}
+
+#single > .highlight > pre {
+  border-radius: 6px;
+
+  padding-top: 0.7rem;
+  padding-bottom: 0;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
 #single header {
   display: none;
 }
@@ -22,4 +45,38 @@
 #single img {
   margin-top: var(--taller-gap);
   margin-bottom: var(--taller-gap);
+}
+
+#single > p > code {
+  background: var(--code-back);
+
+  border: 1px solid var(--code-border);
+  border-radius: 4px;
+
+  font-family: var(--body);
+  font-size: 0.9rem;
+
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+}
+
+#single table {
+  font-size: var(--small);
+  margin-inline: auto;
+}
+
+#single table td {
+  padding: 0.25rem;
+}
+
+#single td:not(:last-child),
+#single th:not(:last-child) {
+  border-right: 1px solid var(--light-gray);
+}
+
+#single > table > thead > tr > th,
+#single tr:not(:last-child) td {
+  border-bottom: 1px solid var(--light-gray);
 }
