@@ -70,13 +70,9 @@ site = "@PrinterOnFire"
   images = "/images"
 
 [params.opengraph]
-# Accessible text for your OpenGraph image.
-# Optional and defaults to your site's name if an image is specified.
-alt = "Danny Sausages"
-
-# Path to your OpenGraph image. Do not prefix with a slash if your "baseURL"
-# ends with one. Optional and defaults to no OpenGraph image.
-image = "opengraph.png"
+# Name of the image in your images page bundle.
+# Optional and defaults to no OpenGraph image.
+image = "opengraph"
 
 [params.sideNav]
   # Title of the page list in the sidebar.
